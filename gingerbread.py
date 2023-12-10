@@ -16,7 +16,7 @@ def getTimeString(ms):
     hours = math.floor((ms % MS_PER_DAY) / MS_PER_HOUR)   
     minutes = math.floor((ms % MS_PER_HOUR) / MS_PER_MINUTE) 
     seconds = math.floor((ms % MS_PER_MINUTE) / MS_PER_SECOND) 
-    return f'{days} d {hours} h {minutes} m {seconds} s' 
+    return f'{days:3} d {hours:2} h {minutes:2} m {seconds:2} s' 
 
 serial = spi(device=0, port=0) 
 device = ssd1309(serial)
@@ -30,5 +30,6 @@ while True:
         msToXMas = xmasMs - currTimeMs
         timeStr = getTimeString(msToXMas)
         print(timeStr)
-        draw.text((30, 40), timeStr, fill="white")
+        draw.text((5, 20), " Christmas Countdown ", fill="white")
+        draw.text((15, 40), timeStr, fill="white")
         time.sleep(1) 
